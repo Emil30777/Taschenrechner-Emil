@@ -1,0 +1,239 @@
+ <<!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Taschenrechner von Emil</title>
+                <style>
+                      body {
+                        background-color: #4a4a4a;
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                    }
+                    h1 {
+                        color: #ffffff;
+                    
+                    }
+                    .buttons {
+                        display: grid;
+                    grid-template-columns: repeat(4, 60px);
+                        gap: 10px;
+                        padding: 20px;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                    .button {
+                        background-color: #444444;
+                        color: #ffffff;
+                        border: none;
+                        font-size: 1.5rem;
+                        padding: 20px;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: background-color 0.2s ease-in-out;
+                    }
+                    button:hover {
+                        background-color: #605f5f;
+                    }
+                    .buttonRechnen {
+                        background-color: #ff9500;
+                        color: #ffffff;font-size: 1.5rem;
+                        padding: 20px;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: background-color 0.2s ease-in-out;
+                    }
+                    .buttonEqual {
+                        background-color: #2e6b00;
+                        color: white;
+                        font-size: 1.5rem;
+                        padding: 20px;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: background-color 0.2s ease-in-out;
+                    }
+                    .buttonDeleteOne {
+                        background-color: #001aff;
+                        color: rgb(255, 255, 255);
+                        font-size: 2rem;
+                        padding: 10px;
+                        border-radius:8px;
+                        cursor: pointer;
+                        transition: background-color 0.2s ease-in-out;
+                    }
+                    .buttonDelete {
+                        background-color: #ff0019;
+                        color: white;
+                        font-size: 1.5rem;
+                        padding: 20px;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: background-color 0.2s ease-in-out;
+                    }
+                    .menu {
+                        /*cposition : absolute;
+                        top: 10px;
+                        right: 10px;*/
+                        display: block;
+                        color: #fdfdfd;
+                        text-decoration: none;
+                        padding: 10px;
+                        margin: 5px 0;
+                        background-color: #333333;
+                        border-radius: 5px;
+                    
+                    }
+                    .menu:hover {
+                        background-color: #555555;
+                        text-decoration: underline;
+                    }
+
+                    .XBAR {
+                        position: absolute;
+                        top: 5px;
+                        right: 5px;
+                
+                        height: 20%;
+                        text-align: right;
+                    }
+                    .Seitenleiste {
+                        position : absolute;
+                        display : none;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        right: 2%;
+                        top: 10%;
+                    }
+                    .sidebutton {
+                        font-size: 2rem;
+                background: #444;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 10px; 
+                    }
+                    .sidebutton:hover {
+                        background-color: #444;
+                    }
+
+                    .custom-block {
+                        background-color: #222222;
+                        border-radius: 16px;
+                        padding: 10px 20px;
+                        margin: 90px auto;  
+                        width: max-width: 300px;  ;
+                        max-width: 325px;
+                        height: 550px;
+                        color: #fff;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                    
+                    }
+
+        .display input{
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                background-color: #000000;
+                color: #ffffff;
+                font-size: 2rem;
+                border: none;
+                padding: 25px;
+                border-radius: 8px;
+                max-width: 80vw;
+                width: 280px;
+                box-sizing:  border-box;
+            }
+            .buttonHome {
+                text-decoration: none;
+                padding-right: 20px;
+                text-align: center;
+            }
+            .calculator {
+                position: absolute;
+                top: 7.5%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+                </style>
+            </head>
+            <body>
+                <blockquote class="custom-block"></blockquote>
+            <div class = "calculator">
+            <h1>Taschenrechner von Emil</h1>
+            </div>
+                
+            <div class="display">
+                    <input type="text" id="display"  readonly>
+                </div>
+            <div class="buttons">
+
+            <button class="buttonDelete" onclick="document.getElementById('display').value = ''">C</button>
+            <button class="button" onclick="appendValue('(')">(</button>
+            <button class="button" onclick="appendValue(')')">)</button>
+            <button class="buttonRechnen" onclick="appendValue('/')">/</button>
+
+            <button class="button" onclick= "appendValue('7')">7</button>
+            <button class="button" onclick= "appendValue('8')">8</button> 
+            <button class="button" onclick= "appendValue('9')">9</button>
+            <button class="buttonRechnen" onclick= "appendValue('*')">x</button>
+
+            <button class="button" onclick= "appendValue('4')">4</button>
+            <button class="button" onclick= "appendValue('5')">5</button>
+            <button class="button" onclick= "appendValue('6')">6</button>
+            <button class="buttonRechnen" onclick= "appendValue('-')">-</button>
+
+            <button class="button" onclick= "appendValue('1')">1</button>
+            <button class="button" onclick= "appendValue('2')">2</button>
+            <button class="button" onclick= "appendValue('3')">3</button>
+            <button class="buttonRechnen" onclick= "appendValue('+')">+</button>
+
+            <button class="buttonDeleteOne" onclick="deleteLast()">⌫</button>
+            <button class="button" onclick= "appendValue('0')">0</button>
+            <button class="button" onclick= "appendValue('.')">.</button>
+            <button class="buttonEqual" onclick= calculateResult('=')> = </button>
+            </div> 
+
+                <div class= "Seitenleiste" id="toggleSidebar">
+                    <a class= "menu" href="index.html" >Home </a>
+                    <a class= "menu" href="" >About</a>
+                    <a class= "menu" href="" >Contact</a>
+                    <a class= "menu" href="" >Services</a>
+                    <a class= "menu" href="" >Blog</a>
+                </div>
+            <div class ="XBAR" id=" toggleButton">
+                <button class="sidebutton" onclick="toggleSidebar()">☰</button>
+            </div>
+            </div>
+            <script>
+            function toggleSidebar() {
+                    const sidebar = document.getElementById('toggleSidebar');
+                if (sidebar.style.display === 'flex') {
+                        sidebar.style.display = 'none';
+                    } else {
+                        sidebar.style.display = 'flex';
+                    }}
+            function appendValue(value) {
+                document.getElementById('display').value += value;
+            }
+            function calculateResult() {
+                try {
+                const display = document.getElementById('display');
+                display.value = eval(display.value);
+                } catch (error) {
+                alert("Fehlerhafte Eingabe!");
+                }
+            }
+            {
+            function deleteLast() {
+                const display = document.getElementById('display');
+                display.value = display.value.slice(0, -1); }
+            } 
+                </script>   
+            </body>
+            </html>
